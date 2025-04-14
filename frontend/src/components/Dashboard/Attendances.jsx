@@ -140,6 +140,17 @@ const Attendence = () => {
     "Status",
     "Action",
   ];
+  // Handle status change
+  const handleStatusChange = (index, newStatus) => {
+    setAttendeesData((prevData) => {
+      const updatedData = [...prevData];
+      updatedData[index] = {
+        ...updatedData[index],
+        status: newStatus,
+      };
+      return updatedData;
+    });
+  };
 
   const statusOptions = ["Present", "Absent", "Medical Leave", "Work From Home"];
 
@@ -244,6 +255,7 @@ const Attendence = () => {
           toggleDropdown={toggleDropdown}
           dropdownOpen={dropdownOpen}
           statusOptions={statusOptions}
+          onStatusChange={handleStatusChange}
           dropdownOptions={dropdownOptions}
           onDropdownAction={handleDropdownAction}
         />
